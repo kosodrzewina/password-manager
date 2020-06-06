@@ -19,10 +19,11 @@ namespace hash
 
 int main()
 {
-	std::string master_password_encrypted, user_input;
+	const std::string master_password_encrypted;
+	std::string user_input;
 
 	std::cout << "Enter password: ";
 	std::cin >> user_input;
 
-	bool access = hash::grant_access(user_input, master_password_encrypted);
+	const bool access = hash::grant_access(user_input, master_password_encrypted);
 }
