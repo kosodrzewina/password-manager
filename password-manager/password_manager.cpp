@@ -8,14 +8,28 @@ namespace serde
 
 namespace hash
 {
-	std::string decrypt(std::string, std::string);
+	std::string decrypt(std::string str, std::string key)
+	{
+		std::string result = "";
+
+		for (int str_index = 0, key_index = 0; str_index < str.size(); str_index++, key_index++)
+		{
+			int offset = str[str_index] - key[key_index];
+
+			result += (offset < 0) ? 128 + offset : offset;
+
+			if (key_index == key.size() - 1)
+				key_index = -1;
+		}
+
+		return result;
+	}
 
 	bool grant_access(std::string input, std::string key)
 	{
 		return (decrypt(input, input) == key);
 	}
 }
-
 
 int main()
 {
