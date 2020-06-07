@@ -42,9 +42,9 @@ namespace hash
 		return result;
 	}
 
-	bool grant_access(std::string input, std::string key)
+	bool grant_access(std::string input, std::string master)
 	{
-		return (decrypt(input, input) == key);
+		return (decrypt(input, input) == master);
 	}
 }
 
