@@ -44,7 +44,7 @@ namespace hash
 
 	bool grant_access(std::string input, std::string master)
 	{
-		return (decrypt(input, input) == master);
+		return (encrypt(input, input) == master);
 	}
 }
 
@@ -60,7 +60,7 @@ int main()
 
 	if (access)
 	{
-		// stuff
+		std::cout << "Access granted!" << std::endl;
 	}
 	else
 	{
