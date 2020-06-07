@@ -50,7 +50,7 @@ namespace hash
 
 int main()
 {
-	const std::string master_password_encrypted;
+	const std::string master_password_encrypted = "H^DdJZPBfX^";
 	std::string user_input;
 
 	std::cout << "Enter password: ";
