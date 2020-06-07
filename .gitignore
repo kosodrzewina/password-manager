@@ -2,3 +2,4 @@
 Debug/
 password-manager.sln
 *.vcxproj*
+credentials.txt
