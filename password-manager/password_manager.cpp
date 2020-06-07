@@ -57,4 +57,14 @@ int main()
 	std::cin >> user_input;
 
 	const bool access = hash::grant_access(user_input, master_password_encrypted);
+
+	if (access)
+	{
+		// stuff
+	}
+	else
+	{
+		std::cout << "Wrong password!";
+		exit(0);
+	}
 }
