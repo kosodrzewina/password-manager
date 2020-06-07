@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "password_manager.hpp"
 
 namespace serde 
@@ -48,9 +46,24 @@ namespace hash
 	}
 }
 
+struct Data
+{
+	std::string file_name;
+	std::vector<std::vector<std::string>> credentials_list;
+
+public:
+	Data(std::string file_name)
+	{
+		this->file_name = file_name;
+
+		if (!std::filesystem::exists(file_name))
+			std::ofstream { this->file_name };
+	}
+};
+
 int main()
 {
-	const std::string master_hash = "H^DdJZPBfX^";
+	const std::string master_hash = "H^DdJZPBfX^", file_name = "credentials.txt";
 	std::string user_input;
 
 	std::cout << "Enter password: ";
@@ -61,6 +74,8 @@ int main()
 	if (access)
 	{
 		std::cout << "Access granted!" << std::endl;
+
+		Data* data = new Data(file_name);
 	}
 	else
 	{
