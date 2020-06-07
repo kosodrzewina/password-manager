@@ -19,12 +19,11 @@ namespace hash
 
 struct Data
 {
-	std::fstream file_output;
-	std::ofstream file_input;
+	std::string file_name;
 	std::vector<std::vector<std::string>> credentials_list;
 
 public:
-	Data(std::fstream);
+	Data(std::string);
 	
 	void create_file(std::ofstream);
 	void save_credentials(std::string, std::string);
