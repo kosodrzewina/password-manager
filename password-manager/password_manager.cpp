@@ -50,13 +50,13 @@ namespace hash
 
 int main()
 {
-	const std::string master_password_encrypted = "H^DdJZPBfX^";
+	const std::string master_hash = "H^DdJZPBfX^";
 	std::string user_input;
 
 	std::cout << "Enter password: ";
 	std::cin >> user_input;
 
-	const bool access = hash::grant_access(user_input, master_password_encrypted);
+	const bool access = hash::grant_access(user_input, master_hash);
 
 	if (access)
 	{
