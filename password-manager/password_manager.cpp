@@ -25,6 +25,23 @@ namespace hash
 		return result;
 	}
 
+	std::string encrypt(std::string str, std::string key)
+	{
+		std::string result = "";
+
+		for (int str_index = 0, key_index = 0; str_index < str.size(); str_index++, key_index++)
+		{
+			int offset = str[str_index] + key[key_index];
+
+			result += (offset > 127) ? offset - 128 : offset;
+
+			if (key_index == key.size() - 1)
+				key_index = -1;
+		}
+
+		return result;
+	}
+
 	bool grant_access(std::string input, std::string key)
 	{
 		return (decrypt(input, input) == key);
