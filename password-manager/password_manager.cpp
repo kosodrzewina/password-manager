@@ -98,12 +98,12 @@ public:
 int main()
 {
 	const std::string master_hash = "H^DdJZPBfX^", file_name = "credentials.txt";
-	std::string user_input;
+	std::string master_password;
 
 	std::cout << "Enter password: ";
-	std::cin >> user_input;
+	std::cin >> master_password;
 
-	const bool access = hash::grant_access(user_input, master_hash);
+	const bool access = hash::grant_access(master_password, master_hash);
 
 	if (access)
 	{
