@@ -5,6 +5,8 @@
 
 #include "Data.hpp"
 
+void loop();
+
 namespace serde
 {
 	std::vector<Entry> serialize(std::string, std::string key);

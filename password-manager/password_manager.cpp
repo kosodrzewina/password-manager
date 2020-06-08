@@ -88,9 +88,32 @@ namespace hash
 	}
 }
 
+void loop()
+{
+	int input;
+
+	std::cout << "0 - list all credentials\n1 - add new entry" << std::endl;
+	std::cin >> input;
+	enum class Actions { list_all, add_entry };
+
+	Actions action = static_cast<Actions>(input);
+
+	switch (action)
+	{
+		case Actions::list_all: // @TODO: list stuff
+			break;
+
+		case Actions::add_entry: // @TODO: add stuff
+			break;
+	}
+
+	loop();
+}
+
 int main()
 {
-	const std::string master_hash = "QPUfJGPYRb", master_offset = "master_offset", file_name = "credentials.txt";
+	const std::string master_hash = "QPUfJGPYRb", master_offset = "master_offset";
+	const char* file_name = "credentials.txt";
 	std::string master_password;
 
 	std::cout << "Enter password: ";
@@ -103,6 +126,7 @@ int main()
 		std::cout << "Access granted!" << std::endl;
 
 		Data* data = new Data(file_name, master_password);
+		loop();
 	}
 	else
 	{

@@ -10,12 +10,12 @@ struct Entry
 
 class Data
 {
-	std::string file_name;
+	const char* file_name;
 	std::string master_password;
 	std::vector<Entry> credentials_list;
 
 public:
-	Data(std::string, std::string);
+	Data(const char*, std::string);
 
 	void update_list();
 };
