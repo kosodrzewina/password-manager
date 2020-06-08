@@ -16,6 +16,7 @@ class Data
 
 public:
 	Data(const char*, std::string);
+	~Data();
 
 	void update_list();
 };

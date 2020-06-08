@@ -12,6 +12,11 @@ Data::Data(const char* file_name, std::string master_password) : file_name(file_
 	update_list();
 }
 
+Data::~Data()
+{
+	delete[] file_name;
+}
+
 void Data::update_list()
 {
 	credentials_list = serde::serialize(file_name, master_password);
