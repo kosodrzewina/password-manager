@@ -16,4 +16,6 @@ class Data
 
 public:
 	Data(std::string, std::string);
+
+	void update_list();
 };
