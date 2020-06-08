@@ -19,4 +19,6 @@ public:
 	~Data();
 
 	void update_list();
+	void list_all();
+	void add_entry();
 };

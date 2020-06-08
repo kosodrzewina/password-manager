@@ -38,7 +38,7 @@ namespace serde
 		return output;
 	}
 
-	void deserialize(std::string file_name, Entry credentials, std::string key)
+	void deserialize(const char* file_name, Entry credentials, std::string key)
 	{
 		std::ofstream file(file_name, std::ios::app);
 		file << hash::encrypt(credentials.login, key) << std::endl
@@ -88,7 +88,7 @@ namespace hash
 	}
 }
 
-void loop()
+void loop(Data data)
 {
 	int input;
 
@@ -100,14 +100,14 @@ void loop()
 
 	switch (action)
 	{
-		case Actions::list_all: // @TODO: list stuff
+		case Actions::list_all: data.list_all();
 			break;
 
-		case Actions::add_entry: // @TODO: add stuff
+		case Actions::add_entry: data.add_entry();
 			break;
 	}
 
-	loop();
+	loop(data);
 }
 
 int main()
@@ -126,7 +126,7 @@ int main()
 		std::cout << "Access granted!" << std::endl;
 
 		Data* data = new Data(file_name, master_password);
-		loop();
+		loop(*data);
 	}
 	else
 	{

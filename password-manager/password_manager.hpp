@@ -10,7 +10,7 @@ void loop();
 namespace serde
 {
 	std::vector<Entry> serialize(std::string, std::string key);
-	void deserialize(std::string, Entry, std::string);
+	void deserialize(const char*, Entry, std::string);
 }
 
 namespace hash
