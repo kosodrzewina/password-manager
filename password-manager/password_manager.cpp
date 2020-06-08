@@ -83,12 +83,14 @@ namespace hash
 struct Data
 {
 	std::string file_name;
+	std::string master_password;
 	std::vector<std::vector<std::string>> credentials_list;
 
 public:
-	Data(std::string file_name)
+	Data(std::string file_name, std::string master_password)
 	{
 		this->file_name = file_name;
+		this->master_password = master_password;
 
 		if (!std::filesystem::exists(file_name))
 			std::ofstream { this->file_name };
@@ -109,7 +111,7 @@ int main()
 	{
 		std::cout << "Access granted!" << std::endl;
 
-		Data* data = new Data(file_name);
+		Data* data = new Data(file_name, master_password);
 	}
 	else
 	{
