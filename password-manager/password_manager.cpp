@@ -82,21 +82,21 @@ namespace hash
 		return result;
 	}
 
-	bool grant_access(std::string input, std::string master)
+	bool grant_access(std::string input, std::string offset, std::string master)
 	{
-		return (encrypt(input, input) == master);
+		return (encrypt(input, offset) == master);
 	}
 }
 
 int main()
 {
-	const std::string master_hash = "H^DdJZPBfX^", file_name = "credentials.txt";
+	const std::string master_hash = "QPUfJGPYRb", master_offset = "master_offset", file_name = "credentials.txt";
 	std::string master_password;
 
 	std::cout << "Enter password: ";
 	std::cin >> master_password;
 
-	const bool access = hash::grant_access(master_password, master_hash);
+	const bool access = hash::grant_access(master_password, master_offset, master_hash);
 
 	if (access)
 	{
