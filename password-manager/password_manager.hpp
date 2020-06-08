@@ -19,4 +19,12 @@ namespace hash
 	bool grant_access(std::string, std::string);
 }
 
-struct Data;
+class Data
+{
+	std::string file_name;
+	std::string master_password;
+	std::vector<std::vector<std::string>> credentials_list;
+
+public:
+	Data(std::string, std::string);
+};
