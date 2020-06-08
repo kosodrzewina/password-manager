@@ -2,6 +2,33 @@
 
 namespace serde 
 {
+	std::vector<std::vector<std::string>> serialize(std::string file_name)
+	{
+		std::vector<std::vector<std::string>> output;
+		std::fstream file(file_name);
+
+		if (file.is_open())
+		{
+			std::string line;
+			size_t index = 0;
+			std::vector<std::string> data_piece;
+
+			while (std::getline(file, line))
+			{
+				data_piece.push_back(line);
+
+				if (index % 2 != 0)
+				{
+					output.push_back(data_piece);
+					data_piece.clear();
+				}
+
+				index++;
+			}
+		}
+
+		return output;
+	}
 }
 
 namespace hash
