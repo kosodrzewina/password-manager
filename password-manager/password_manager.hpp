@@ -8,8 +8,8 @@
 
 namespace serde
 {
-	std::string serialize();
-	void deserialize(std::string);
+	std::vector<std::vector<std::string>> serialize(std::string);
+	void deserialize(std::string, std::vector<std::string>);
 }
 
 namespace hash
