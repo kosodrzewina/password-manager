@@ -3,10 +3,12 @@
 #include <vector>
 #include <string>
 
+#include "Data.hpp"
+
 namespace serde
 {
-	std::vector<std::vector<std::string>> serialize(std::string, std::string key);
-	void deserialize(std::string, std::vector<std::string>, std::string);
+	std::vector<Entry> serialize(std::string, std::string key);
+	void deserialize(std::string, Entry, std::string);
 }
 
 namespace hash

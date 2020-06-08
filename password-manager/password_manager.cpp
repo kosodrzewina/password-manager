@@ -5,27 +5,30 @@
 #include "password_manager.hpp"
 #include "Data.hpp"
 
-namespace serde 
+namespace serde
 {
-	std::vector<std::vector<std::string>> serialize(std::string file_name, std::string key)
+	std::vector<Entry> serialize(std::string file_name, std::string key)
 	{
-		std::vector<std::vector<std::string>> output;
+		std::vector<Entry> output;
 		std::fstream file(file_name);
 
 		if (file.is_open())
 		{
 			std::string line;
 			size_t index = 0;
-			std::vector<std::string> data_piece;
+			Entry data_piece;
 
 			while (std::getline(file, line))
 			{
-				data_piece.push_back(hash::decrypt(line, key));
+				if (data_piece.login == "")
+					data_piece.login = hash::decrypt(line, key);
+				else
+					data_piece.password = hash::decrypt(line, key);
 
 				if (index % 2 != 0)
 				{
 					output.push_back(data_piece);
-					data_piece.clear();
+					data_piece = Entry();
 				}
 
 				index++;
@@ -35,11 +38,11 @@ namespace serde
 		return output;
 	}
 
-	void deserialize(std::string file_name, std::vector<std::string> credentials, std::string key)
+	void deserialize(std::string file_name, Entry credentials, std::string key)
 	{
 		std::ofstream file(file_name, std::ios::app);
-		file << hash::encrypt(credentials[0], key) << std::endl
-			 << hash::encrypt(credentials[1], key) << std::endl;
+		file << hash::encrypt(credentials.login, key) << std::endl
+			 << hash::encrypt(credentials.password, key) << std::endl;
 	}
 }
 
