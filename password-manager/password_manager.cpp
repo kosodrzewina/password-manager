@@ -29,6 +29,12 @@ namespace serde
 
 		return output;
 	}
+
+	void deserialize(std::string file_name, std::vector<std::string> credentials)
+	{
+		std::ofstream file(file_name, std::ios::app);
+		file << credentials[0] << std::endl << credentials[1] << std::endl;
+	}
 }
 
 namespace hash
