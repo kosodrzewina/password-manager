@@ -92,9 +92,9 @@ void loop(Data data)
 {
 	int input;
 
-	std::cout << "0 - list all credentials\n1 - add new entry" << std::endl;
+	std::cout << "0 - list all credentials\n1 - add new entry\n2 - exit" << std::endl;
 	std::cin >> input;
-	enum class Actions { list_all, add_entry };
+	enum class Actions { list_all, add_entry, exit };
 
 	Actions action = static_cast<Actions>(input);
 
@@ -105,6 +105,8 @@ void loop(Data data)
 
 		case Actions::add_entry: data.add_entry();
 			break;
+
+		case Actions::exit: exit(0);
 	}
 
 	loop(data);
