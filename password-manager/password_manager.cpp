@@ -2,7 +2,7 @@
 
 namespace serde 
 {
-	std::vector<std::vector<std::string>> serialize(std::string file_name)
+	std::vector<std::vector<std::string>> serialize(std::string file_name, std::string key)
 	{
 		std::vector<std::vector<std::string>> output;
 		std::fstream file(file_name);
@@ -15,7 +15,7 @@ namespace serde
 
 			while (std::getline(file, line))
 			{
-				data_piece.push_back(line);
+				data_piece.push_back(hash::decrypt(line, key));
 
 				if (index % 2 != 0)
 				{
@@ -30,10 +30,11 @@ namespace serde
 		return output;
 	}
 
-	void deserialize(std::string file_name, std::vector<std::string> credentials)
+	void deserialize(std::string file_name, std::vector<std::string> credentials, std::string key)
 	{
 		std::ofstream file(file_name, std::ios::app);
-		file << credentials[0] << std::endl << credentials[1] << std::endl;
+		file << hash::encrypt(credentials[0], key) << std::endl
+			 << hash::encrypt(credentials[1], key) << std::endl;
 	}
 }
 
