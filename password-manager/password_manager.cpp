@@ -98,6 +98,15 @@ void loop(Data data)
 
 	Actions action = static_cast<Actions>(input);
 
+	if (std::cin.fail())
+	{
+		std::cout << "Wrong input!" << std::endl;
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		loop(data);
+	}
+
 	switch (action)
 	{
 		case Actions::list_all: data.list_all();
@@ -107,6 +116,9 @@ void loop(Data data)
 			break;
 
 		case Actions::exit: exit(0);
+
+		default: std::cout << "Wrong input!" << std::endl;
+			break;
 	}
 
 	loop(data);
