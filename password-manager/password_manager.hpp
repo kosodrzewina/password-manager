@@ -5,7 +5,7 @@
 
 #include "Data.hpp"
 
-void loop();
+void loop(Data);
 
 namespace serde
 {
