@@ -94,8 +94,8 @@ void loop(Data data)
 
 	std::cout << "0 - list all credentials\n1 - add new entry\n2 - exit" << std::endl;
 	std::cin >> input;
-	enum class Actions { list_all, add_entry, exit };
 
+	enum class Actions { list_all, add_entry, exit };
 	Actions action = static_cast<Actions>(input);
 
 	if (std::cin.fail())
