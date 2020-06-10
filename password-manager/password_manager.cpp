@@ -54,9 +54,9 @@ namespace hash
 
 		for (int str_index = 0, key_index = 0; str_index < str.size(); str_index++, key_index++)
 		{
-			int offset = str[str_index] - key[key_index];
+			int offset = str[str_index] - key[key_index] + 32;
 
-			result += (offset < 0) ? 128 + offset : offset;
+			result += (offset < 32) ? 96 + offset : offset;
 
 			if (key_index == key.size() - 1)
 				key_index = -1;
@@ -71,9 +71,9 @@ namespace hash
 
 		for (int str_index = 0, key_index = 0; str_index < str.size(); str_index++, key_index++)
 		{
-			int offset = str[str_index] + key[key_index];
+			int offset = str[str_index] + key[key_index] - 32;
 
-			result += (offset > 127) ? offset - 128 : offset;
+			result += (offset > 127) ? offset - 96 : offset;
 
 			if (key_index == key.size() - 1)
 				key_index = -1;
@@ -126,7 +126,8 @@ void loop(Data data)
 
 int main()
 {
-	const std::string master_hash = "QPUfJGPYRb", master_offset = "master_offset";
+	//QPUfJ ? GPYRb
+	const std::string master_hash = "QPUfJGPYRb", master_offset = "master_offset";
 	const char* file_name = "credentials.txt";
 	std::string master_password;
 
@@ -135,6 +136,7 @@ int main()
 
 	const bool access = hash::grant_access(master_password, master_offset, master_hash);
 
+	std::cout << hash::encrypt("dobre-haslo", master_offset) << std::endl;
 	if (access)
 	{
 		std::cout << "Access granted!" << std::endl;
