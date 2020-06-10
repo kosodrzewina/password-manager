@@ -126,7 +126,6 @@ void loop(Data data)
 
 int main()
 {
-	//QPUfJ ? GPYRb
 	const std::string master_hash = "QPUfJGPYRb", master_offset = "master_offset";
 	const char* file_name = "credentials.txt";
 	std::string master_password;
