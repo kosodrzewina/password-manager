@@ -135,7 +135,6 @@ int main()
 
 	const bool access = hash::grant_access(master_password, master_offset, master_hash);
 
-	std::cout << hash::encrypt("dobre-haslo", master_offset) << std::endl;
 	if (access)
 	{
 		std::cout << "Access granted!" << std::endl;
