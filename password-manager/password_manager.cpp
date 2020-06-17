@@ -92,7 +92,7 @@ void loop(Data data)
 {
 	int input;
 
-	std::cout << "0 - list all credentials\n1 - add new entry\n2 - exit" << std::endl;
+	std::cout << "0 - list all credentials\n1 - add new entry\n2 - exit" << std::endl << "> ";
 	std::cin >> input;
 
 	enum class Actions { list_all, add_entry, exit };
