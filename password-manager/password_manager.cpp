@@ -15,7 +15,6 @@ namespace serde
 		if (file.is_open())
 		{
 			std::string line;
-			size_t index = 0;
 			Entry data_piece;
 
 			while (std::getline(file, line))
@@ -23,15 +22,11 @@ namespace serde
 				if (data_piece.login == "")
 					data_piece.login = hash::decrypt(line, key);
 				else
-					data_piece.password = hash::decrypt(line, key);
-
-				if (index % 2 != 0)
 				{
+					data_piece.password = hash::decrypt(line, key);
 					output.push_back(data_piece);
 					data_piece = Entry();
 				}
-
-				index++;
 			}
 		}
 
